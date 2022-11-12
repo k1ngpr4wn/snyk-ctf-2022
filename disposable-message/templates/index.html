@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Disposable Message</title>
+</head>
+<body>
+<header>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <strong>DM</strong>
+            </a>
+            <div class="text-end">
+                <a type="button" href="?color=ffffff" class="btn btn-outline-light me-2">🌞</a>
+                <a type="button" href="?color=000000" class="btn btn-warning">🌜</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Disposable Message</h1>
+            <p class="lead text-muted">Looking to send private messages that automatically self destruct after a view? Disposable Message service is simply, fun and free!</p>
+            <form class="card p-2" id="req-form" method="post" action="/new">
+                <div class="mb-3">
+                    <textarea class="form-control" name="message" rows="5">Your message!</textarea>
+                    <small class="text-muted">You can use HTML tags: i, s, img, a, p, br, ul, ol, li</small>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Send!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<script>
+  if (window.location.search.startsWith('?color=')) {
+    localStorage.setItem(
+      'color',
+      decodeURIComponent(window.location.search.replace('?color=', ''))
+    );
+  }
+
+  const color = localStorage.getItem('color') || 'ffffff';
+  const style = document.createElement('style');
+
+  style.innerText = `body {background-color: #${color};}`;
+  document.head.appendChild(style);
+</script>
+</body>
+</html>
+

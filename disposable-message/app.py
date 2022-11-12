@@ -50,3 +50,7 @@ def admin_bot(id):
     p = Popen(["node", "index.js", url])
     print("admin-bot finished")
     return render_template('admin-bot.html')
+
+@app.route("/", methods=['GET'])
+def index():
+    return render_template('index.html')
